@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import forgotlogo from "../assets/forgot.png";
 
 const UpdatePassword = () => {
   const [formData, setFormData] = useState({
@@ -48,49 +49,66 @@ const UpdatePassword = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-center mb-6">Update Password</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              Email:
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              New Password:
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
-          >
-            Update Password
-          </button>
-        </form>
-        {message && (
-          <p className={`mt-4 text-center ${message.includes("Error") ? "text-red-600" : "text-green-600"}`}>
-            {message}
-          </p>
-        )}
-        <ToastContainer />
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 p-6">
+      {/* Main Container */}
+      <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
+        {/* Image Container */}
+        <div className="w-full md:w-1/2 flex justify-center md:block p-6">
+          <img
+            src={forgotlogo}
+            alt="Forgot Password"
+            className="w-32 h-32 md:w-full md:h-full object-cover rounded-full md:rounded-none mb-4 md:mb-0"
+          />
+        </div>
+
+        {/* Form Container */}
+        <div className="w-full md:w-1/2 p-8">
+          <h2 className="text-2xl font-bold text-center mb-8">Update Password</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-medium mb-2">
+                Email:
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-gray-700 text-sm font-medium mb-2">
+                New Password:
+              </label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-green-600 text-white py-3 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 transition duration-300"
+            >
+              Update Password
+            </button>
+          </form>
+          {message && (
+            <p
+              className={`mt-4 text-center ${
+                message.includes("Error") ? "text-red-600" : "text-green-600"
+              }`}
+            >
+              {message}
+            </p>
+          )}
+          <ToastContainer />
+        </div>
       </div>
     </div>
   );

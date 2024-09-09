@@ -11,7 +11,7 @@ const Register = async (req, res) => {
       return res.json({ error: "User already exists" });
     }
 
-    const token = jwt.sign(email, process.env.SECRET);
+    const token = jwt.sign(email, process.env.JWT_SECRET);
     const hash = await bcrypt.hash(password, 10);
     const newUser = await User.create({ name, email, password: hash });
     res.json({ newUser, token });

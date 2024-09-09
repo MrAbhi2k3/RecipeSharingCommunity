@@ -43,7 +43,6 @@ const Recipes = () => {
 
         if (response.ok) {
           toast.success("Recipe deleted successfully");
-
           setTimeout(() => {
             window.location = "/recipes";
           }, 4000);
@@ -54,7 +53,6 @@ const Recipes = () => {
       }
     } catch (error) {
       toast.error("An error occurred while deleting the recipe:", error);
-
       setTimeout(() => {
         window.location.href = "/recipes";
       }, 3000);
@@ -72,7 +70,6 @@ const Recipes = () => {
 
       if (response.ok) {
         toast.success("Recipe added to favorites successfully");
-
         setTimeout(() => {
           window.location.href = "/favouriteRecipes";
         }, 4000);
@@ -129,65 +126,69 @@ const Recipes = () => {
       </div>
 
       {recipes.length > 0 ? (
-        recipes.map((recipe) => (
-          <div
-            key={recipe._id}
-            className="bg-white rounded-lg shadow-md p-6 mb-6"
-          >
-            <h2 className="text-2xl font-bold mb-2">{recipe.title}</h2>
-            <img
-              src={recipe.imageUrl}
-              alt={recipe.title}
-              className="w-45 h-45 object-cover rounded-md mb-4"
-            />
-            <h3 className="text-lg font-semibold mb-2">Ingredients:</h3>
-            <ul className="list-disc list-inside mb-4">
-              {recipe.ingredients.length > 0 &&
-                recipe.ingredients.map((ingredient, index) => (
-                  <li key={index} className="text-gray-700">
-                    {ingredient}
-                  </li>
-                ))}
-            </ul>
-            <div className="mb-4">
-              <h3 className="text-lg font-semibold mb-2">Instructions:</h3>
-              {recipe.instructions.match(/^\d+\./) ? (
-                <div className="text-gray-700">
-                  {recipe.instructions.split("\n").map((step, index) => (
-                    <p key={index}>{step}</p>
-                  ))}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {recipes.map((recipe) => (
+            <div
+              key={recipe._id}
+              className="bg-white rounded-lg shadow-md p-6 flex flex-col justify-between"
+            >
+              <div>
+                <h2 className="text-2xl font-bold mb-2">{recipe.title}</h2>
+                <img
+                  src={recipe.imageUrl}
+                  alt={recipe.title}
+                  className="w-full h-64 object-cover rounded-md mb-4"
+                />
+                <h3 className="text-lg font-semibold mb-2">Ingredients:</h3>
+                <ul className="list-disc list-inside mb-4">
+                  {recipe.ingredients.length > 0 &&
+                    recipe.ingredients.map((ingredient, index) => (
+                      <li key={index} className="text-gray-700">
+                        {ingredient}
+                      </li>
+                    ))}
+                </ul>
+                <div className="mb-4">
+                  <h3 className="text-lg font-semibold mb-2">Instructions:</h3>
+                  {recipe.instructions.match(/^\d+\./) ? (
+                    <div className="text-gray-700">
+                      {recipe.instructions.split("\n").map((step, index) => (
+                        <p key={index}>{step}</p>
+                      ))}
+                    </div>
+                  ) : (
+                    <ol className="list-decimal list-inside text-gray-700">
+                      {recipe.instructions.split("\n").map((step, index) => (
+                        <li key={index}>{step}</li>
+                      ))}
+                    </ol>
+                  )}
                 </div>
-              ) : (
-                <ol className="list-decimal list-inside text-gray-700">
-                  {recipe.instructions.split("\n").map((step, index) => (
-                    <li key={index}>{step}</li>
-                  ))}
-                </ol>
-              )}
-            </div>
+              </div>
 
-            <div className="flex items-center space-x-4">
-              <button
-                className="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600"
-                onClick={() => handleDeleteRecipe(recipe._id)}
-              >
-                Delete
-              </button>
-              <button
-                className="px-4 py-2 text-white bg-indigo-500 rounded-md hover:bg-indigo-600"
-                onClick={() => handleAddToFavorites(recipe._id)}
-              >
-                Add to Favorites
-              </button>
-              <Link
-                to={"/addRecipe"}
-                className="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600"
-              >
-                Add more recipes
-              </Link>
+              <div className="flex items-center space-x-4 mt-4">
+                <button
+                  className="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600 transition duration-200"
+                  onClick={() => handleDeleteRecipe(recipe._id)}
+                >
+                  Delete
+                </button>
+                <button
+                  className="px-4 py-2 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 transition duration-200"
+                  onClick={() => handleAddToFavorites(recipe._id)}
+                >
+                  Add to Favorites
+                </button>
+                <Link
+                  to={"/addRecipe"}
+                  className="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600 transition duration-200"
+                >
+                  Add more recipes
+                </Link>
+              </div>
             </div>
-          </div>
-        ))
+          ))}
+        </div>
       ) : (
         <h2 className="text-center text-xl text-gray-700">No Recipes Found</h2>
       )}

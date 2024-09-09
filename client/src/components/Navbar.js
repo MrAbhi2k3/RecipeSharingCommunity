@@ -11,7 +11,8 @@ const Navbar = () => {
     if (window.confirm("Want to Logout from this Session?")) {
       localStorage.clear();
       window.location.href = "/login";
-    } else {
+    }
+    else {
       window.location.href = "/recipes";
     }
   };

@@ -1,7 +1,8 @@
 
 ## Recipe Code Structure
-The project follows a simple MERN stack structure:
+The project follows a simple MERN stack structure based on CRUD operation also:
 
+- botoken - Contains the contact info.
 - client: Contains the React frontend.
 - server: Contains the Express.js backend.
 - Schema: Define the MongoDB schemas and models.
@@ -14,6 +15,7 @@ The project follows a simple MERN stack structure:
 #### Frontend:
 
 - React
+- Tailwind CSS
 
 #### Backend:
 
@@ -24,38 +26,6 @@ The project follows a simple MERN stack structure:
 - bcrypt for secured password hashing
 
 # Recipe Sharing Full Stack App (MERN Stack)
-
-## Table of Contents
-
-- [Screenshots](#screenshots)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Getting Started](#getting-started)
-- [Technologies Used](#technologies-used)
-
-## Screenshots
-
-
-### 1. Recipe List
-![Recipe List](screenshots/recipe-list.png)
-
-### 2. Recipe Details
-![Recipe Details](screenshots/recipe-details.png)
-
-### 3. Login Page
-![Login Page](screenshots/login.png)
-
-### 4. Registration Page
-![SignUp Page](screenshots/signup.png)
-
-### 5. User Dashboard
-![User Dashboard](screenshots/user-dashboard.png)
-
-### 6. Favorites
-![Favorites](screenshots/favorites.png)
-
-### 7. Contact Page
-![Contact](screenshots/contact.png)
 
 ## Features
 
@@ -70,8 +40,9 @@ The project follows a simple MERN stack structure:
 
 Ensure you have the following installed:
 
-- [Bot API](api.telegram.org) (API of Bot to Interact or Contact)
+- [Bot API](api.telegram.org) (API of Telegram Bot to Interact or Contact)
 - [Node.js](https://nodejs.org/) (version 14 or higher)
+- [TailwindCss.com](tailwindcss.com)(For the Styling Css of the WebApp)
 - [React.js](https://react.dev/)
 - [MongoDB](https://www.mongodb.com/) (running locally for  me or You Can Host On Render or Heroku)
 - [Git](https://git-scm.com/) for version control
@@ -86,7 +57,7 @@ Ensure you have the following installed:
 
 2. Navigate to the project directory:
 
-       cd RecipeDB   
+       cd RecipeSharingCommunity   
 
 3. Navigate to the client directory:
      
@@ -109,11 +80,16 @@ Ensure you have the following installed:
        PORT=2000
        MONGODB_URI=mongodb://localhost/recipedb [Create Your Own]
        SECRET=your-secret-key
+   
 Replace `your-secret-key` with a secure secret for JWT token generation.
 
-8. Start the development server
+8. To Start the development server
 
        npm run dev
+
+9. To Start Client Side Server
+   
+       npm start
 
 ## 📫 Connect with me:
 

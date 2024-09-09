@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faDiscord, faInstagram, faTelegram, faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faDiscord, faInstagram, faTelegram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 
@@ -13,7 +12,7 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start mb-4 md:mb-0">
           <img src={logo} alt="Logo" className="w-20 h-auto mb-2" />
           <p className="text-center md:text-left text-sm">
-            &copy; {new Date().getFullYear()} MrAbhi2k3. All Rights Reserved.
+            &copy; {new Date().getFullYear()} <a class="hover:text-green-400 text-red-400" href="https://github.com/MrAbhi2k3">MrAbhi2k3</a>. All Rights Reserved.
           </p>
         </div>
 
@@ -60,14 +59,8 @@ const Footer = () => {
             <a href="https://t.me/TeleRoidGRoup" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition duration-200">
               <FontAwesomeIcon icon={faTelegram} size="2x" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition duration-200">
-              <FontAwesomeIcon icon={faTwitter} size="2x" />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition duration-200">
+            <a href="https://facebook.com/MrAbhi2k3" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition duration-200">
               <FontAwesomeIcon icon={faFacebook} size="2x" />
-            </a>
-            <a href="mailto:mrabhi2k3@example.com" className="hover:text-blue-400 transition duration-200">
-              <FontAwesomeIcon icon={faEnvelope} size="2x" />
             </a>
           </div>
         </div>
@@ -76,7 +69,7 @@ const Footer = () => {
       {/* Divider and Bottom Text */}
       <div className="border-t border-gray-700 mt-6 pt-4">
         <p className="text-center text-sm text-gray-400">
-          Designed and Developed with ❤️ by MrAbhi2k3. For inquiries, contact us via social media or email.
+          Designed and Developed with ❤️ by <a class="hover:text-green-400 text-red-400" href="https://github.com/MrAbhi2k3">MrAbhi2k3</a>. For inquiries, contact us via social media or email.
         </p>
       </div>
     </footer>
