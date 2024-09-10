@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import forgotlogo from "../assets/forgot.png";
+import { BACKEND_URL } from "../config/config";
 
 const UpdatePassword = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +21,8 @@ const UpdatePassword = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:2000/auth/forgotpassword",
+        // "http://localhost:2000/auth/forgotpassword",
+        `${BACKEND_URL}/auth/forgotpassword`,
         {
           method: "PUT",
           headers: {

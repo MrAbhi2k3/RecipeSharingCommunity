@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { FaRegListAlt, FaPlusCircle } from "react-icons/fa";
 import { MdTitle, MdOutlineImage } from "react-icons/md";
 import { AiOutlineFileText } from "react-icons/ai";
+import { BACKEND_URL } from "../config/config";
+
 
 const AddRecipe = () => {
   const [recipe, setRecipe] = useState({
@@ -53,7 +55,8 @@ const AddRecipe = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:2000/auth/recipe", {
+      const response = await fetch(`${BACKEND_URL}/auth/recipe`,
+        {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

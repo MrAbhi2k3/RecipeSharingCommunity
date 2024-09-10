@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import loginImage from "../assets/login.png";
+import { BACKEND_URL } from "../config/config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const Login = () => {
     }
 
     try {
-      let response = await fetch("http://localhost:2000/auth/login", {
+      let response = await fetch(`${BACKEND_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: Email, password }),

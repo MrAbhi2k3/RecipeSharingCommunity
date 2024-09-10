@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BACKEND_URL } from "../config/config";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -11,7 +12,7 @@ const Recipes = () => {
   }, []);
 
   const getRecipes = () => {
-    fetch("http://localhost:2000/auth/recipe", {
+    fetch(`${BACKEND_URL}/auth/recipe`, {
       method: "GET",
       headers: {
         Authorization: `${localStorage.getItem("token")}`,
@@ -35,7 +36,7 @@ const Recipes = () => {
     try {
       if (window.confirm("Are you sure you want to delete this recipe?")) {
         const response = await fetch(
-          `http://localhost:2000/auth/recipe/${recipeId}`,
+          `${BACKEND_URL}/auth/recipe/${recipeId}`,
           {
             method: "DELETE",
           }
@@ -62,7 +63,7 @@ const Recipes = () => {
   const handleAddToFavorites = async (recipeId) => {
     try {
       const response = await fetch(
-        `http://localhost:2000/auth/likedRecipes/${recipeId}`,
+        `${BACKEND_URL}/auth/likedRecipes/${recipeId}`,
         {
           method: "POST",
         }
@@ -90,7 +91,7 @@ const Recipes = () => {
     try {
       if (e.target.value) {
         let Searchedrecipes = await fetch(
-          `http://localhost:2000/auth/searchRecipes/${e.target.value}`,
+          `${BACKEND_URL}/auth/searchRecipes/${e.target.value}`,
           {
             method: "GET",
             headers: {

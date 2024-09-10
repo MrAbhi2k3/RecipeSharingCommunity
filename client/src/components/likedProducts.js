@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BACKEND_URL } from "../config/config";
 
 const LikedProducts = () => {
   const [favoriteProducts, setFavoriteProducts] = useState([]);
@@ -11,8 +12,8 @@ const LikedProducts = () => {
 
   const fetchFavoriteProducts = async () => {
     try {
-      const response = await fetch("http://localhost:2000/auth/likedRecipes");
-
+      const response = await fetch(`${BACKEND_URL}/auth/likedRecipes`);
+      
       if (!response.ok) {
         toast.error("Failed to fetch favorite products");
         return;
@@ -28,7 +29,8 @@ const LikedProducts = () => {
   const handleRemoveItem = async (recipeId) => {
     try {
       if (window.confirm("Are you sure you want to remove this recipe from favorites?")) {
-        const response = await fetch(`http://localhost:2000/auth/removeLiked/${recipeId}`, {
+        const response = await fetch(`${BACKEND_URL}/auth/removeLiked/${recipeId}`,
+        {
           method: "DELETE",
         });
 

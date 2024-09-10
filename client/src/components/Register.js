@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import registerImage from "../assets/register.png";
+import { BACKEND_URL } from "../config/config";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -21,7 +22,7 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:2000/auth/register", {
+      const response = await fetch(`${BACKEND_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email: Email, password }),
