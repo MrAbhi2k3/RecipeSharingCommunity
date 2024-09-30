@@ -46,7 +46,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-400 to-blue-500">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-400 to-green-500">
       <div className="flex w-full max-w-2xl p-8 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
 
         {/* Left Section for Image */}

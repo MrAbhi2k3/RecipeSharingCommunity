@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FiMail, FiLock } from "react-icons/fi";
 import forgotlogo from "../assets/forgot.png";
 import { BACKEND_URL } from "../config/config";
 
@@ -20,17 +21,13 @@ const UpdatePassword = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        // "http://localhost:2000/auth/forgotpassword",
-        `${BACKEND_URL}/auth/forgotpassword`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`${BACKEND_URL}/auth/forgotpassword`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       if (response.ok) {
         const data = await response.json();
@@ -55,47 +52,57 @@ const UpdatePassword = () => {
       {/* Main Container */}
       <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Image Container */}
-        <div className="w-full md:w-1/2 flex justify-center md:block p-6">
+        <div className="w-full md:w-1/2 flex justify-center items-center p-6 bg-gray-100">
           <img
             src={forgotlogo}
             alt="Forgot Password"
-            className="w-32 h-32 md:w-full md:h-full object-cover rounded-full md:rounded-none mb-4 md:mb-0"
+            className="w-40 h-40 md:w-64 md:h-64 object-contain"
           />
         </div>
 
         {/* Form Container */}
-        <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-2xl font-bold text-center mb-8">Update Password</h2>
+        <div className="w-full md:w-1/2 p-8 bg-white">
+          <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
+            Update Password
+          </h2>
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
+            <div className="mb-6">
               <label className="block text-gray-700 text-sm font-medium mb-2">
-                Email:
+                Email
               </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <div className="flex items-center border border-gray-300 rounded-lg p-2 shadow-sm">
+                <FiMail className="text-gray-500 mr-3" size={20} />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="Enter your email"
+                  className="w-full p-2 bg-transparent outline-none"
+                />
+              </div>
             </div>
             <div className="mb-6">
               <label className="block text-gray-700 text-sm font-medium mb-2">
-                New Password:
+                New Password
               </label>
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <div className="flex items-center border border-gray-300 rounded-lg p-2 shadow-sm">
+                <FiLock className="text-gray-500 mr-3" size={20} />
+                <input
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  placeholder="Enter new password"
+                  className="w-full p-2 bg-transparent outline-none"
+                />
+              </div>
             </div>
             <button
               type="submit"
-              className="w-full bg-green-600 text-white py-3 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 transition duration-300"
+              className="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white py-3 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-400 transition duration-300"
             >
               Update Password
             </button>

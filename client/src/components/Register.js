@@ -49,9 +49,8 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-green-400">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-400 to-green-500">
       <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white shadow-2xl rounded-lg overflow-hidden">
-        {/* Image Container */}
         <div className="w-full md:w-1/2 flex justify-center md:block p-6">
           <img
             src={registerImage}
@@ -60,7 +59,6 @@ const Register = () => {
           />
         </div>
 
-        {/* Form Container */}
         <div className="w-full md:w-1/2 p-8">
           <form onSubmit={handleSubmit}>
             <h2 className="text-4xl font-bold text-indigo-700 mb-8 text-center">

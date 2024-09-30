@@ -6,7 +6,6 @@ import { MdTitle, MdOutlineImage } from "react-icons/md";
 import { AiOutlineFileText } from "react-icons/ai";
 import { BACKEND_URL } from "../config/config";
 
-
 const AddRecipe = () => {
   const [recipe, setRecipe] = useState({
     title: "",
@@ -55,8 +54,7 @@ const AddRecipe = () => {
     }
 
     try {
-      const response = await fetch(`${BACKEND_URL}/auth/recipe`,
-        {
+      const response = await fetch(`${BACKEND_URL}/auth/recipe`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,74 +76,99 @@ const AddRecipe = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-cover bg-center bg-[url('/path-to-your-image.jpg')]">
-      <div className="w-full max-w-lg p-8 space-y-6 bg-white rounded shadow-md bg-opacity-90">
-        <h2 className="text-2xl font-bold text-center text-gray-700">Add Recipe</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex items-center">
-            <MdTitle className="text-xl mr-2 text-indigo-500" />
-            <label className="block text-sm font-medium text-gray-600">Title:</label>
+    <div className="flex items-center justify-center min-h-screen bg-cover bg-center bg-gradient-to-b from-indigo-300 via-white to-indigo-100 p-4">
+      <div className="w-full max-w-lg md:max-w-3xl lg:max-w-4xl p-6 space-y-6 bg-white rounded-lg shadow-xl border border-indigo-200">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center text-indigo-600">Add Your Recipe</h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Title Input */}
+          <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
+            <div className="flex items-center">
+              <MdTitle className="text-2xl md:text-3xl lg:text-4xl text-indigo-600" />
+              <label className="block text-md md:text-lg font-semibold text-gray-600 ml-2">Title:</label>
+            </div>
             <input
               type="text"
               name="title"
               value={recipe.title}
               onChange={handleInputChange}
-              className="block w-full px-3 py-2 ml-2 text-gray-700 border rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-3 py-2 text-gray-700 border border-indigo-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Enter recipe title"
             />
           </div>
-          <div>
-            <div className="flex items-center">
-              <FaRegListAlt className="text-xl mr-2 text-indigo-500" />
-              <label className="block text-sm font-medium text-gray-600">Ingredients:</label>
+
+          {/* Ingredients Section */}
+          <div className="space-y-2">
+            <div className="flex items-center space-x-2">
+              <FaRegListAlt className="text-2xl md:text-3xl text-indigo-600" />
+              <label className="block text-md md:text-lg font-semibold text-gray-600">Ingredients:</label>
             </div>
             {recipe.ingredients.map((ingredient, index) => (
-              <div key={index} className="flex items-center mt-2">
+              <div key={index} className="flex items-center space-x-2 mt-2">
                 <input
                   type="text"
                   value={ingredient}
                   onChange={(e) => handleIngredientChange(index, e.target.value)}
-                  className="flex-1 px-3 py-2 mr-2 text-gray-700 border rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-3 py-2 text-gray-700 border border-indigo-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder={`Ingredient ${index + 1}`}
                 />
-                <button
-                  type="button"
-                  onClick={handleAddIngredient}
-                  className="px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 flex items-center"
-                >
-                  <FaPlusCircle className="mr-1" /> Add Ingredient
-                </button>
+                {index === recipe.ingredients.length - 1 && (
+                  <button
+                    type="button"
+                    onClick={handleAddIngredient}
+                    className="px-3 py-2 text-sm text-white bg-indigo-600 rounded-md hover:bg-indigo-700 flex items-center space-x-1"
+                  >
+                    <FaPlusCircle className="text-white" />
+                    <span>Add Ingredient</span>
+                  </button>
+                )}
               </div>
             ))}
           </div>
-          <div className="flex items-center">
-            <AiOutlineFileText className="text-xl mr-2 text-indigo-500" />
-            <label className="block text-sm font-medium text-gray-600">Instructions:</label>
+
+          {/* Instructions */}
+          <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
+            <div className="flex items-center">
+              <AiOutlineFileText className="text-2xl md:text-3xl text-indigo-600" />
+              <label className="block text-md md:text-lg font-semibold text-gray-600 ml-2">Instructions:</label>
+            </div>
             <textarea
               name="instructions"
               value={recipe.instructions}
               onChange={handleInputChange}
-              className="block w-full px-3 py-2 ml-2 text-gray-700 border rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-3 py-2 text-gray-700 border border-indigo-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              rows="4"
+              placeholder="Enter recipe instructions"
             />
           </div>
-          <div className="flex items-center">
-            <MdOutlineImage className="text-xl mr-2 text-indigo-500" />
-            <label className="block text-sm font-medium text-gray-600">Image URL:</label>
+
+          {/* Image URL */}
+          <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
+            <div className="flex items-center">
+              <MdOutlineImage className="text-2xl md:text-3xl text-indigo-600" />
+              <label className="block text-md md:text-lg font-semibold text-gray-600 ml-2">Image URL:</label>
+            </div>
             <input
               type="text"
               name="imageUrl"
               value={recipe.imageUrl}
               onChange={handleInputChange}
-              className="block w-full px-3 py-2 ml-2 text-gray-700 border rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-3 py-2 text-gray-700 border border-indigo-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Enter image URL (optional)"
             />
           </div>
+
+          {/* Submit Button */}
           <div className="flex justify-end">
             <button
               type="submit"
-              className="px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700"
+              className="px-4 py-2 font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition-all duration-300 ease-in-out"
             >
               Add Recipe
             </button>
           </div>
         </form>
+
+        {/* Toast Container */}
         <ToastContainer />
       </div>
     </div>

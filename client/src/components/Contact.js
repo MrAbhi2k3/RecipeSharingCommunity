@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { FaUser, FaTelegramPlane, FaRegEnvelope, FaFileAlt } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
-import "../css/multi.css";
-
+import "../css/multi.css"; // Assuming custom CSS
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -55,65 +55,70 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gradient-to-r from-green-400 to-blue-500 p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen p-8 bg-gradient-to-br from-blue-50 to-gray-200 animate-gradient-x">
       {/* Left Side: Contact Information */}
-      <div className="w-full md:w-1/2 p-8 text-white space-y-4 md:mr-4">
-        <h2 className="text-4xl font-bold mb-4">Get in Touch</h2>
-        <p className="text-lg">We help you to grow your share Recipes with Public and get more views.</p>
-        <p className="text-md">
-          <strong>Email:</strong> mailus@mrabhi2k3.me
+      <div className="w-full md:w-1/2 lg:w-1/3 bg-white shadow-lg rounded-lg p-8 space-y-6 backdrop-filter backdrop-blur-lg hover:shadow-2xl transition-all duration-500">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Contact Us</h2>
+        <p className="text-lg font-light text-gray-600">
+          We’re here to help! Get in touch and let us know how we can assist you.
         </p>
-        <p className="text-md">
-          <strong>Phone:</strong> +123 456 7890
-        </p>
-        <p className="text-md">
-          <strong>Telegram:</strong> <a className="text-black text-1xl font-bold hover:text-blue-500" href="https://t.me/MrAbhi2k3"> @MrAbhi2k3</a>
-        </p>
-      </div>
-
-      {/* Right Side: Contact Form */}
-      <div className="w-full md:w-1/2 p-8 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
         <form
           onSubmit={onSubmit}
           className={`space-y-6 ${shakeAnimation ? "animate-shake" : ""}`}
         >
-          <h2 className="text-2xl font-bold text-gray-800">Contact Us</h2>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={onChange}
-            placeholder="Your Name"
-            className="w-full mb-3 p-3 border rounded-lg shadow-sm focus:outline-none focus:border-blue-500"
-          />
-          <input
-            type="text"
-            name="subject"
-            value={subject}
-            onChange={onChange}
-            placeholder="Subject"
-            className="w-full mb-3 p-3 border rounded-lg shadow-sm focus:outline-none focus:border-blue-500"
-          />
-          <textarea
-            name="issue"
-            value={issue}
-            onChange={onChange}
-            placeholder="Issue"
-            className="w-full mb-3 p-3 border rounded-lg shadow-sm focus:outline-none focus:border-blue-500"
-          />
-          <input
-            type="text"
-            name="telegramUsername"
-            value={telegramUsername}
-            onChange={onChange}
-            placeholder="Telegram Username"
-            className="w-full mb-3 p-3 border rounded-lg shadow-sm focus:outline-none focus:border-blue-500"
-          />
+          <div className="relative">
+            <FaUser className="absolute text-gray-400 left-3 top-3" />
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={onChange}
+              placeholder="Your Name"
+              className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            />
+          </div>
+
+          <div className="relative">
+            <FaRegEnvelope className="absolute text-gray-400 left-3 top-3" />
+            <input
+              type="text"
+              name="subject"
+              value={subject}
+              onChange={onChange}
+              placeholder="Subject"
+              className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            />
+          </div>
+
+          <div className="relative">
+            <FaFileAlt className="absolute text-gray-400 left-3 top-3" />
+            <textarea
+              name="issue"
+              value={issue}
+              onChange={onChange}
+              placeholder="Describe your issue"
+              className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 resize-none"
+              rows="4"
+            />
+          </div>
+
+          <div className="relative">
+            <FaTelegramPlane className="absolute text-gray-400 left-3 top-3" />
+            <input
+              type="text"
+              name="telegramUsername"
+              value={telegramUsername}
+              onChange={onChange}
+              placeholder="Telegram Username"
+              className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            />
+          </div>
+
           <button
             type="submit"
-            className="w-25 text-center bg-blue-600 hover:bg-gray-900 text-white py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-300 font-medium"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none"
           >
-            Send Me Now
+            Send Message
           </button>
         </form>
         <ToastContainer />
