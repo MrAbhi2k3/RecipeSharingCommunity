@@ -172,19 +172,25 @@ const Recipes = () => {
                   className="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600 transition duration-200"
                   onClick={() => handleDeleteRecipe(recipe._id)}
                 >
-                  Delete
+                  Delete Recipe
                 </button>
                 <button
                   className="px-4 py-2 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 transition duration-200"
                   onClick={() => handleAddToFavorites(recipe._id)}
                 >
-                  Add to Favorites
+                  Add Favorites
                 </button>
+                <Link
+                  to={`/updateRecipe/${recipe._id}`}
+                  className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-200"
+                >
+                  Update Recipe
+                </Link>
                 <Link
                   to={"/addRecipe"}
                   className="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600 transition duration-200"
                 >
-                  Add more recipes
+                  Add Extra Recipe
                 </Link>
               </div>
             </div>

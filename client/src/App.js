@@ -10,6 +10,7 @@ import LikedProducts from "./components/likedProducts";
 import ForgotPassword from "./components/ForgotPassword";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import UpdateRecipe from "./components/UpdateRecipe";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/signup" element={<Register />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/contact" element={<Contact/>} />
+        
 
         <Route element={<PrivateComponent />}>
           <Route path="/favouriteRecipes" element={<LikedProducts />} />
@@ -29,6 +31,7 @@ function App() {
           <Route path="/" element={<Recipes />} />
           <Route path="/addRecipe" element={<AddRecipe />} />
           <Route path="/contact" element={<Contact/>} />
+          <Route path="/updateRecipe/:id" element={<UpdateRecipe />} />
         </Route>
       </Routes>
       <Footer />
